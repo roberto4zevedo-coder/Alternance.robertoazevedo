@@ -276,6 +276,23 @@
             transition: all 0.3s ease;
             opacity: 0;
             animation: slideInRight 0.6s ease forwards;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .highlight-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 203, 154, 0.2), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .highlight-card:hover::before {
+            left: 100%;
         }
 
         .highlight-card:nth-child(1) { animation-delay: 0.1s; }
@@ -325,6 +342,7 @@
             border-top: 4px solid var(--accent-bronze);
             opacity: 0;
             animation: fadeInUp 0.6s ease forwards;
+            position: relative;
         }
 
         .experience-card:nth-child(1) { animation-delay: 0.1s; }
@@ -335,6 +353,21 @@
             transform: translateY(-10px);
             box-shadow: 0 12px 30px rgba(17, 100, 102, 0.2);
             border-top-color: var(--accent-warm);
+        }
+
+        .experience-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 3px;
+            height: 0;
+            background: linear-gradient(180deg, var(--accent-warm), var(--accent-bronze));
+            transition: height 0.4s ease;
+        }
+
+        .experience-card:hover::before {
+            height: 100%;
         }
 
         .experience-card h3 {
@@ -392,6 +425,8 @@
             transition: all 0.3s ease;
             opacity: 0;
             animation: fadeInUp 0.6s ease forwards;
+            position: relative;
+            overflow: hidden;
         }
 
         .skill-group:nth-child(1) { animation-delay: 0.1s; }
@@ -403,6 +438,21 @@
             transform: translateY(-8px);
             box-shadow: 0 10px 30px rgba(17, 100, 102, 0.15);
             background: linear-gradient(135deg, rgba(209, 232, 226, 0.3), rgba(255, 203, 154, 0.1));
+        }
+
+        .skill-group::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--accent-bronze), var(--accent-warm));
+            transition: width 0.4s ease;
+        }
+
+        .skill-group:hover::after {
+            width: 100%;
         }
 
         .skill-group h3 {
@@ -445,6 +495,7 @@
             transition: all 0.3s ease;
             opacity: 0;
             animation: fadeInUp 0.6s ease forwards;
+            position: relative;
         }
 
         .project-card:nth-child(1) { animation-delay: 0.1s; }
@@ -453,6 +504,22 @@
         .project-card:hover {
             transform: translateY(-12px);
             box-shadow: 0 15px 40px rgba(17, 100, 102, 0.2);
+        }
+
+        .project-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 0;
+            background: rgba(255, 203, 154, 0.05);
+            transition: height 0.4s ease;
+            pointer-events: none;
+        }
+
+        .project-card:hover::after {
+            height: 100%;
         }
 
         .project-image {
@@ -477,6 +544,28 @@
             height: 100%;
             background: rgba(0, 0, 0, 0);
             transition: background 0.3s ease;
+        }
+
+        .project-image::after {
+            content: '';
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background: repeating-linear-gradient(
+                45deg,
+                transparent,
+                transparent 10px,
+                rgba(255, 255, 255, 0.1) 10px,
+                rgba(255, 255, 255, 0.1) 20px
+            );
+            animation: shimmer 3s infinite;
+            top: 0;
+            left: 0;
+        }
+
+        @keyframes shimmer {
+            0% { transform: translate(-100%, -100%); }
+            100% { transform: translate(100%, 100%); }
         }
 
         .project-card:hover .project-image::before {
@@ -518,12 +607,24 @@
             font-weight: 700;
             color: var(--accent-bronze);
             font-size: 1.1rem;
+            animation: countUp 0.8s ease-out;
         }
 
         .stat-label {
             font-size: 0.75rem;
             color: var(--primary-blue);
             font-weight: 600;
+        }
+
+        @keyframes countUp {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
         }
 
         /* Education Section */
@@ -547,11 +648,19 @@
             position: relative;
             opacity: 0;
             animation: slideInRight 0.6s ease forwards;
+            padding: 1rem;
+            transition: all 0.3s ease;
+            border-radius: 8px;
         }
 
         .education-item:nth-child(1) { animation-delay: 0.1s; }
         .education-item:nth-child(2) { animation-delay: 0.2s; }
         .education-item:nth-child(3) { animation-delay: 0.3s; }
+
+        .education-item:hover {
+            background: rgba(209, 232, 226, 0.15);
+            transform: translateX(8px);
+        }
 
         .education-item::before {
             content: '';
@@ -564,6 +673,17 @@
             border-radius: 50%;
             border: 3px solid white;
             box-shadow: 0 0 0 2px var(--accent-bronze);
+            animation: pulse 2s infinite;
+        }
+
+        .education-item:hover::before {
+            animation: none;
+            box-shadow: 0 0 12px 2px rgba(255, 203, 154, 0.5);
+        }
+
+        @keyframes pulse {
+            0%, 100% { box-shadow: 0 0 0 2px var(--accent-bronze); }
+            50% { box-shadow: 0 0 8px 2px rgba(255, 203, 154, 0.3); }
         }
 
         .education-item h3 {
@@ -627,12 +747,34 @@
             border-radius: 50px;
             transition: all 0.3s ease;
             font-weight: 600;
+            position: relative;
+            overflow: hidden;
         }
 
         .contact-link:hover {
             background: var(--accent-warm);
             color: var(--primary-dark);
             transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(255, 203, 154, 0.4);
+        }
+
+        .contact-link::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.5s, height 0.5s;
+            pointer-events: none;
+        }
+
+        .contact-link:hover::after {
+            width: 300px;
+            height: 300px;
         }
 
         /* Footer */
@@ -669,18 +811,6 @@
                 grid-template-columns: 1fr;
             }
         }
-
-        /* Scroll animations trigger */
-        .fade-in {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.6s ease, transform 0.6s ease;
-        }
-
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
     </style>
 </head>
 <body>
@@ -708,8 +838,8 @@
             <h1>
                 <span data-en="Hi, I'm" data-fr="Salut, je suis">Hi, I'm</span> <span class="accent" data-en="Roberto" data-fr="Roberto">Roberto</span>
             </h1>
-            <p data-en="I'm a commercial development professional passionate about digital innovation, productivity optimization, and sustainable growth. Let's build something amazing together." data-fr="Je suis un professionnel du développement commercial passionné par l'innovation digitale, l'optimisation de la productivité et la croissance durable. Construisons quelque chose d'incroyable ensemble.">
-                I'm a commercial development professional passionate about digital innovation, productivity optimization, and sustainable growth. Let's build something amazing together.
+            <p data-en="Commercial Development Expert | B2B Business Developer | Workflow Automation Specialist. Passionate about vibecoding, continuous learning, and sustainable growth." data-fr="Expert Développement Commercial | Développeur Commercial B2B | Spécialiste Automatisation Workflow. Passionné par le vibecoding, l'apprentissage continu et la croissance durable.">
+                Commercial Development Expert | B2B Business Developer | Workflow Automation Specialist. Passionate about vibecoding, continuous learning, and sustainable growth.
             </p>
             <button class="cta-button" data-en="Let's work together" data-fr="Travaillons ensemble" onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})"></button>
         </div>
@@ -720,25 +850,25 @@
         <h2 data-en="About Me" data-fr="À propos">About Me</h2>
         <div class="about-content">
             <div class="about-text">
-                <p data-en="I'm Roberto, a commercial development expert with a passion for vibecoding, continuous learning, and sales excellence. Every project I touch gets the growth mindset treatment." data-fr="Je suis Roberto, un expert du développement commercial passionné par le vibecoding, l'apprentissage continu et l'excellence en vente. Chaque projet que je touche obtient le traitement de la mentalité de croissance.">
+                <p data-en="I'm Roberto, a commercial development expert with a passion for vibecoding, continuous learning, and sales excellence. Every project I touch gets the growth mindset treatment – I believe in innovation, digital transformation, and always proposing solutions for growth." data-fr="Je suis Roberto, un expert du développement commercial passionné par le vibecoding, l'apprentissage continu et l'excellence en vente. Chaque projet que je touche obtient le traitement de la mentalité de croissance – je crois à l'innovation, la transformation digitale et je propose toujours des solutions pour la croissance.">
                     I'm Roberto, a commercial development expert with a passion for vibecoding, continuous learning, and sales excellence. Every project I touch gets the growth mindset treatment.
                 </p>
-                <p data-en="With experience across retail, e-commerce, and B2B environments, I've consistently driven performance improvements and built strong client relationships. My approach combines data-driven insights with creative problem-solving." data-fr="Avec une expérience dans le commerce de détail, l'e-commerce et les environnements B2B, j'ai constamment amélioré les performances et construit de fortes relations clients. Mon approche combine les perspectives basées sur les données avec la résolution créative de problèmes.">
-                    With experience across retail, e-commerce, and B2B environments, I've consistently driven performance improvements and built strong client relationships. My approach combines data-driven insights with creative problem-solving.
+                <p data-en="With proven experience in retail, e-commerce, and B2B environments, I've consistently driven performance improvements through strategic account management, AI-powered automation, and creative problem-solving. My approach combines data-driven insights with innovative solutions to achieve sustainable revenue growth." data-fr="Avec une expérience éprouvée dans le commerce de détail, l'e-commerce et les environnements B2B, j'ai constamment amélioré les performances par la gestion stratégique des comptes, l'automatisation alimentée par l'IA et la résolution créative de problèmes. Mon approche combine les perspectives basées sur les données avec des solutions innovantes pour atteindre une croissance durable.">
+                    With experience across retail, e-commerce, and B2B environments, I've consistently driven performance improvements and built strong client relationships.
                 </p>
             </div>
             <div class="about-highlights">
                 <div class="highlight-card">
-                    <h3 data-en="Innovation Focus" data-fr="Focus Innovation">Innovation Focus</h3>
-                    <p data-en="Always proposing growth strategies and digital solutions" data-fr="Toujours proposer des stratégies de croissance et des solutions numériques">Always proposing growth strategies and digital solutions</p>
+                    <h3 data-en="B2B & Key Accounts" data-fr="B2B & Comptes Clés">B2B & Key Accounts</h3>
+                    <p data-en="Strategic account management & enterprise business development expertise" data-fr="Gestion stratégique des comptes et expertise en développement commercial d'entreprise">Strategic account management & enterprise business development expertise</p>
                 </div>
                 <div class="highlight-card">
-                    <h3 data-en="Results-Driven" data-fr="Axé Résultats">Results-Driven</h3>
-                    <p data-en="27% uplift in Click & Collect, 14% engagement boost on social media" data-fr="Augmentation de 27 % des achats et retrait en magasin, +14 % d'engagement sur les réseaux sociaux">27% uplift in Click & Collect, 14% engagement boost on social media</p>
+                    <h3 data-en="Proven Growth Results" data-fr="Résultats Croissance Prouvés">Proven Growth Results</h3>
+                    <p data-en="+27% Click & Collect growth | +14% social media engagement | Sustainable revenue expansion" data-fr="+27 % de croissance Click & Collect | +14 % d'engagement réseaux sociaux | Expansion durable des revenus">+27% Click & Collect growth | +14% social media engagement | Sustainable revenue expansion</p>
                 </div>
                 <div class="highlight-card">
-                    <h3 data-en="Efficiency Expert" data-fr="Expert en Efficacité">Efficiency Expert</h3>
-                    <p data-en="Streamlining processes to eliminate time-consuming tasks" data-fr="Rationaliser les processus pour éliminer les tâches chronophages">Streamlining processes to eliminate time-consuming tasks</p>
+                    <h3 data-en="AI & Workflow Mastery" data-fr="Maîtrise IA & Workflow">AI & Workflow Mastery</h3>
+                    <p data-en="Intelligent workflow automation to eliminate time-consuming tasks and boost internal productivity" data-fr="Automatisation intelligente des workflows pour éliminer les tâches chronophages et augmenter la productivité">Intelligent workflow automation to eliminate time-consuming tasks and boost internal productivity</p>
                 </div>
             </div>
         </div>
@@ -750,34 +880,34 @@
         <div class="experience-grid">
             <div class="experience-card">
                 <h3 data-en="Commercial Development Manager" data-fr="Responsable Développement Commercial">Commercial Development Manager</h3>
-                <div class="company" data-en="Midea" data-fr="Midea">Midea</div>
-                <div class="dates">06/2025 - Present | Vitrolles</div>
+                <div class="company">Midea</div>
+                <div class="dates">06/2025 - Present | Vitrolles, France</div>
                 <ul>
-                    <li data-en="Identify and expand growth opportunities" data-fr="Identifier et développer les opportunités de croissance">Identify and expand growth opportunities</li>
-                    <li data-en="Pilot team initiatives to optimize sales processes" data-fr="Piloter les initiatives d'équipe pour optimiser les processus de vente">Pilot team initiatives to optimize sales processes</li>
-                    <li data-en="Drive performance through collaborative, solution-oriented approach" data-fr="Améliorer les performances par une approche collaborative et orientée solutions">Drive performance through collaborative, solution-oriented approach</li>
+                    <li data-en="Identify and expand high-value growth opportunities for enterprise clients" data-fr="Identifier et développer les opportunités de croissance à haute valeur pour les clients d'entreprise">Identify and expand high-value growth opportunities for enterprise clients</li>
+                    <li data-en="Pilot and execute team initiatives to optimize sales processes and efficiency" data-fr="Piloter et exécuter les initiatives d'équipe pour optimiser les processus et l'efficacité des ventes">Pilot and execute team initiatives to optimize sales processes and efficiency</li>
+                    <li data-en="Drive performance through collaborative, solution-oriented B2B approach" data-fr="Améliorer les performances par une approche collaborative et orientée solutions B2B">Drive performance through collaborative, solution-oriented B2B approach</li>
                 </ul>
             </div>
 
             <div class="experience-card">
                 <h3 data-en="Commercial Advisor" data-fr="Conseiller Commercial">Commercial Advisor</h3>
-                <div class="company" data-en="Darty" data-fr="Darty">Darty</div>
-                <div class="dates">06/2024 - 07/2025 | Istres</div>
+                <div class="company">Darty</div>
+                <div class="dates">06/2024 - 07/2025 | Istres, France</div>
                 <ul>
-                    <li data-en="Maximized sales through upselling and client relationship management" data-fr="Maximisé les ventes par l'upselling et la gestion de la relation client">Maximized sales through upselling and client relationship management</li>
-                    <li data-en="Enhanced customer satisfaction and departmental performance" data-fr="Amélioré la satisfaction client et la performance du département">Enhanced customer satisfaction and departmental performance</li>
-                    <li data-en="Built social media presence boosting local brand awareness" data-fr="Construit une présence sur les réseaux sociaux renforçant la notoriété locale">Built social media presence boosting local brand awareness</li>
+                    <li data-en="Maximized sales revenue through advanced upselling and client relationship management" data-fr="Maximisé les revenus par l'upselling avancé et la gestion de la relation client">Maximized sales revenue through advanced upselling and client relationship management</li>
+                    <li data-en="Enhanced customer satisfaction and departmental performance metrics" data-fr="Amélioré la satisfaction client et les métriques de performance du département">Enhanced customer satisfaction and departmental performance metrics</li>
+                    <li data-en="Created & managed social media presence, boosting local brand awareness and engagement" data-fr="Créé et géré la présence sur les réseaux sociaux, augmentant la notoriété locale">Created & managed social media presence, boosting local brand awareness and engagement</li>
                 </ul>
             </div>
 
             <div class="experience-card">
                 <h3 data-en="Sales Advisor" data-fr="Conseiller de Vente">Sales Advisor</h3>
-                <div class="company" data-en="Coach" data-fr="Coach">Coach</div>
-                <div class="dates">01/2023 - 06/2024 | Miramas</div>
+                <div class="company">Coach</div>
+                <div class="dates">01/2023 - 06/2024 | Miramas, France</div>
                 <ul>
-                    <li data-en="Advised clients with tailored recommendations" data-fr="Conseillé les clients avec des recommandations sur mesure">Advised clients with tailored recommendations</li>
-                    <li data-en="Developed sales techniques and customer relations skills" data-fr="Développé les techniques de vente et les compétences en relation client">Developed sales techniques and customer relations skills</li>
-                    <li data-en="+27% growth in Click & Collect and e-commerce delivery" data-fr="+27 % de croissance en Click & Collect et livraison e-commerce">+27% growth in Click & Collect and e-commerce delivery</li>
+                    <li data-en="Consulted clients with personalized recommendations and tailored solutions" data-fr="Conseillé les clients avec des recommandations personnalisées et des solutions adaptées">Consulted clients with personalized recommendations and tailored solutions</li>
+                    <li data-en="Developed sales techniques and strengthened customer relations skills" data-fr="Développé les techniques de vente et renforcé les compétences en relation client">Developed sales techniques and strengthened customer relations skills</li>
+                    <li data-en="Achieved +27% growth in Click & Collect and e-commerce delivery through personalized recommendations" data-fr="Atteint +27 % de croissance en Click & Collect par des recommandations personnalisées">Achieved +27% growth in Click & Collect and e-commerce delivery through personalized recommendations</li>
                 </ul>
             </div>
         </div>
@@ -788,25 +918,25 @@
         <h2 data-en="Core Competencies" data-fr="Compétences Clés">Core Competencies</h2>
         <div class="skills-container">
             <div class="skill-group">
-                <h3 data-en="Sales & Business" data-fr="Vente & Affaires">Sales & Business</h3>
-                <span class="skill-tag">Upselling</span>
-                <span class="skill-tag">CRM Management</span>
-                <span class="skill-tag">Client Relations</span>
+                <h3 data-en="B2B Business Development" data-fr="Développement Commercial B2B">B2B Business Development</h3>
+                <span class="skill-tag">Key Account Management</span>
+                <span class="skill-tag">Strategic Partnerships</span>
+                <span class="skill-tag">Enterprise Sales</span>
                 <span class="skill-tag">Revenue Growth</span>
             </div>
             <div class="skill-group">
-                <h3 data-en="Digital & Marketing" data-fr="Digital & Marketing">Digital & Marketing</h3>
-                <span class="skill-tag">Social Media</span>
-                <span class="skill-tag">E-commerce</span>
-                <span class="skill-tag">Digital Strategy</span>
-                <span class="skill-tag">Brand Awareness</span>
+                <h3 data-en="Commercial Excellence" data-fr="Excellence Commerciale">Commercial Excellence</h3>
+                <span class="skill-tag">Upselling & Cross-selling</span>
+                <span class="skill-tag">CRM Systems</span>
+                <span class="skill-tag">Client Relationship</span>
+                <span class="skill-tag">Sales Strategy</span>
             </div>
             <div class="skill-group">
-                <h3 data-en="Process & Operations" data-fr="Processus & Opérations">Process & Operations</h3>
-                <span class="skill-tag">Workflow Automation</span>
-                <span class="skill-tag">Task Optimization</span>
-                <span class="skill-tag">Productivity</span>
-                <span class="skill-tag">Efficiency</span>
+                <h3 data-en="Digital Transformation" data-fr="Transformation Digitale">Digital Transformation</h3>
+                <span class="skill-tag">AI Workflow Automation</span>
+                <span class="skill-tag">Process Optimization</span>
+                <span class="skill-tag">E-commerce Integration</span>
+                <span class="skill-tag">Social Media Strategy</span>
             </div>
             <div class="skill-group">
                 <h3 data-en="Languages" data-fr="Langues">Languages</h3>
@@ -822,18 +952,18 @@
         <h2 data-en="Featured Projects" data-fr="Projets Vedettes">Featured Projects</h2>
         <div class="projects-container">
             <div class="project-card">
-                <div class="project-image" data-en="AI Automation Project" data-fr="Projet Automatisation IA">
-                    AI Automation Project
+                <div class="project-image">
+                    <span data-en="🤖 AI Workflow Automation" data-fr="🤖 Automatisation Workflow IA">🤖 AI Workflow Automation</span>
                 </div>
                 <div class="project-content">
                     <h3 data-en="Workflow Automation with AI" data-fr="Automatisation Workflow avec IA">Workflow Automation with AI</h3>
-                    <p data-en="Designed and implemented intelligent workflows to eliminate time-consuming tasks, significantly improving internal company productivity." data-fr="Conception et mise en œuvre de workflows intelligents pour éliminer les tâches chronophages, améliorant significativement la productivité interne de l'entreprise.">
+                    <p data-en="Designed and implemented intelligent workflows to eliminate time-consuming, repetitive tasks. Leveraged AI automation to streamline internal processes, significantly improving company productivity and employee efficiency." data-fr="Conception et mise en œuvre de workflows intelligents pour éliminer les tâches chronophages et répétitives. Utilisation de l'automatisation IA pour rationaliser les processus internes et améliorer significativement la productivité.">
                         Designed and implemented intelligent workflows to eliminate time-consuming tasks, significantly improving internal company productivity.
                     </p>
                     <div class="project-stats">
                         <div class="stat">
-                            <div class="stat-value" data-en="Impact" data-fr="Impact">High Impact</div>
-                            <div class="stat-label" data-en="Efficiency" data-fr="Efficacité">Efficiency</div>
+                            <div class="stat-value" data-en="High" data-fr="Élevé">High</div>
+                            <div class="stat-label" data-en="Impact" data-fr="Impact">Impact</div>
                         </div>
                         <div class="stat">
                             <div class="stat-value" data-en="Active" data-fr="Actif">Active</div>
@@ -844,12 +974,12 @@
             </div>
 
             <div class="project-card">
-                <div class="project-image" data-en="Social Media Growth" data-fr="Croissance Réseaux Sociaux">
-                    Social Media Growth
+                <div class="project-image">
+                    <span data-en="📱 Social Media Growth" data-fr="📱 Croissance Réseaux Sociaux">📱 Social Media Growth</span>
                 </div>
                 <div class="project-content">
                     <h3 data-en="Social Media Strategy" data-fr="Stratégie Réseaux Sociaux">Social Media Strategy</h3>
-                    <p data-en="Developed and executed comprehensive social media strategy, boosting engagement by 14% and significantly increasing local brand recognition." data-fr="Développement et exécution d'une stratégie complète des réseaux sociaux, augmentant l'engagement de 14 % et augmentant significativement la reconnaissance locale de la marque.">
+                    <p data-en="Developed and executed comprehensive social media strategy creating accounts on multiple platforms. Boosted engagement by 14% through strategic content planning, community management, and local brand awareness campaigns. Revised working methods for better efficiency." data-fr="Développement et exécution d'une stratégie complète des réseaux sociaux avec création de comptes. Augmentation de l'engagement de 14 % par la planification stratégique du contenu et la gestion communautaire.">
                         Developed and executed comprehensive social media strategy, boosting engagement by 14% and significantly increasing local brand recognition.
                     </p>
                     <div class="project-stats">
@@ -873,17 +1003,17 @@
         <div class="education-timeline">
             <div class="education-item">
                 <h3 data-en="Master - Large Business School Program" data-fr="Master - Programme Grandes Écoles">Master - Large Business School Program</h3>
-                <div class="school" data-en="Kedge Business School" data-fr="Kedge Business School">Kedge Business School</div>
+                <div class="school">Kedge Business School</div>
                 <div class="dates">2026 - 2028 | Marseille</div>
             </div>
             <div class="education-item">
                 <h3 data-en="Bachelor - Commercial Development Manager" data-fr="Bachelor - Responsable Développement Commercial">Bachelor - Commercial Development Manager</h3>
-                <div class="school" data-en="ESAME" data-fr="ESAME">ESAME</div>
+                <div class="school">ESAME</div>
                 <div class="dates">2025 - 2026 | Salon de Provence</div>
             </div>
             <div class="education-item">
-                <h3 data-en="BTS - Business & Commerce" data-fr="BTS - Commerce et Affaires">BTS - Business & Commerce</h3>
-                <div class="school" data-en="ESAME" data-fr="ESAME">ESAME</div>
+                <h3 data-en="BTS MCO - Business & Commerce" data-fr="BTS MCO - Commerce et Affaires">BTS MCO - Business & Commerce</h3>
+                <div class="school">ESAME</div>
                 <div class="dates">2023 - 2025 | Salon de Provence</div>
             </div>
         </div>
@@ -893,13 +1023,13 @@
     <section id="contact" class="section">
         <div class="contact-section">
             <h2 data-en="Let's Get in Touch" data-fr="Restons en Contact">Let's Get in Touch</h2>
-            <p data-en="Ready to collaborate? Reach out and let's explore opportunities together." data-fr="Prêt à collaborer ? Contactez-moi et explorons les opportunités ensemble.">
+            <p data-en="Ready to collaborate on growth opportunities? Reach out and let's explore what we can achieve together." data-fr="Prêt à collaborer sur des opportunités de croissance ? Contactez-moi et explorons ce que nous pouvons réaliser ensemble.">
                 Ready to collaborate? Reach out and let's explore opportunities together.
             </p>
             <div class="contact-links">
                 <a href="mailto:roberto.4zevedo@gmail.com" class="contact-link" data-en="Email" data-fr="Email">Email</a>
                 <a href="https://linkedin.com/in/roberto-azevedo-bas" target="_blank" class="contact-link" data-en="LinkedIn" data-fr="LinkedIn">LinkedIn</a>
-                <a href="#" class="contact-link" data-en="Download CV" data-fr="Télécharger CV">Download CV</a>
+                <a href="https://drive.google.com/uc?export=download&id=YOUR_CV_ID" class="contact-link" data-en="Download CV" data-fr="Télécharger CV">Download CV</a>
             </div>
         </div>
     </section>
@@ -910,58 +1040,27 @@
     </footer>
 
     <script>
-        // Language Switching
         let currentLang = 'en';
 
         function switchLang(lang) {
             currentLang = lang;
-            
-            // Update button states
             document.getElementById('lang-en').classList.toggle('active', lang === 'en');
             document.getElementById('lang-fr').classList.toggle('active', lang === 'fr');
 
-            // Update all elements with data attributes
+            // Mise à jour de TOUS les éléments avec data-en et data-fr
             document.querySelectorAll('[data-en][data-fr]').forEach(el => {
                 el.textContent = el.getAttribute(`data-${lang}`);
             });
 
-            // Update nested elements
-            document.querySelectorAll('[data-en]').forEach(el => {
+            // Mise à jour des éléments avec seulement data-en
+            document.querySelectorAll('[data-en]:not([data-fr])').forEach(el => {
                 if (lang === 'en') {
                     el.textContent = el.getAttribute('data-en');
-                } else if (lang === 'fr' && el.hasAttribute('data-fr')) {
-                    el.textContent = el.getAttribute('data-fr');
                 }
             });
         }
+</parameter>
 
-        // Scroll Animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -100px 0px'
-        };
-
-        const observer = new IntersectionObserver(entries => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-
-        // Trigger animations on scroll
-        window.addEventListener('scroll', () => {
-            document.querySelectorAll('.experience-card, .skill-group, .project-card').forEach(el => {
-                const rect = el.getBoundingClientRect();
-                if (rect.top < window.innerHeight && rect.bottom > 0) {
-                    el.style.animation = 'none';
-                }
-            });
-        });
-
-        // Smooth scroll for nav links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
