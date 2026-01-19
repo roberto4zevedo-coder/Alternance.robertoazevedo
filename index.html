@@ -1,0 +1,1077 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roberto Azevedo - Commercial Development Expert</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-dark: #2C3531;
+            --primary-blue: #1A3A45;
+            --accent-bronze: #116466;
+            --accent-light: #D9B08C;
+            --accent-warm: #FFCB9A;
+            --accent-mint: #D1E8E2;
+            --text-dark: #0a0e27;
+            --text-light: #f1f5f9;
+            --bg-light: #f8fafc;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Header/Navigation */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(17, 100, 102, 0.1);
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-blue);
+            text-decoration: none;
+            letter-spacing: -0.5px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            font-size: 0.95rem;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent-bronze);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .lang-toggle {
+            display: flex;
+            gap: 0.5rem;
+            background: var(--accent-mint);
+            padding: 0.4rem;
+            border-radius: 20px;
+            cursor: pointer;
+        }
+
+        .lang-btn {
+            padding: 0.4rem 1rem;
+            border: none;
+            background: transparent;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.85rem;
+            color: var(--text-dark);
+            transition: all 0.3s ease;
+            border-radius: 15px;
+        }
+
+        .lang-btn.active {
+            background: white;
+            color: var(--accent-bronze);
+            box-shadow: 0 2px 8px rgba(17, 100, 102, 0.15);
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 80px;
+            padding: 100px 2rem;
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-dark) 100%);
+            color: var(--text-light);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: rgba(217, 176, 140, 0.1);
+            border-radius: 50%;
+            top: -100px;
+            right: -100px;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: rgba(209, 232, 226, 0.08);
+            border-radius: 50%;
+            bottom: -50px;
+            left: -50px;
+            animation: float 8s ease-in-out infinite reverse;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(30px); }
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            z-index: 10;
+            animation: fadeInUp 0.8s ease 0.2s both;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero h1 {
+            font-size: clamp(2rem, 8vw, 4rem);
+            font-weight: 800;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .hero .accent {
+            color: var(--accent-warm);
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+            max-width: 600px;
+            line-height: 1.8;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: var(--accent-warm);
+            color: var(--primary-dark);
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(255, 203, 154, 0.3);
+            border: none;
+            cursor: pointer;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(255, 203, 154, 0.4);
+            background: #ffd6b3;
+        }
+
+        /* About Section */
+        .section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 80px 2rem;
+            scroll-margin-top: 80px;
+        }
+
+        .section h2 {
+            font-size: clamp(2rem, 5vw, 3rem);
+            color: var(--primary-blue);
+            margin-bottom: 3rem;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        .section h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent-bronze), var(--accent-warm));
+            border-radius: 2px;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-text p {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            color: #475569;
+            line-height: 1.8;
+        }
+
+        .about-highlights {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .highlight-card {
+            padding: 1.5rem;
+            background: white;
+            border-left: 4px solid var(--accent-bronze);
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            opacity: 0;
+            animation: slideInRight 0.6s ease forwards;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .highlight-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 203, 154, 0.2), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .highlight-card:hover::before {
+            left: 100%;
+        }
+
+        .highlight-card:nth-child(1) { animation-delay: 0.1s; }
+        .highlight-card:nth-child(2) { animation-delay: 0.2s; }
+        .highlight-card:nth-child(3) { animation-delay: 0.3s; }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .highlight-card:hover {
+            transform: translateX(10px);
+            box-shadow: 0 8px 25px rgba(17, 100, 102, 0.15);
+        }
+
+        .highlight-card h3 {
+            color: var(--accent-bronze);
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .highlight-card p {
+            color: #64748b;
+            font-size: 0.95rem;
+        }
+
+        /* Experience Section */
+        .experience-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .experience-card {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            border-top: 4px solid var(--accent-bronze);
+            opacity: 0;
+            animation: fadeInUp 0.6s ease forwards;
+            position: relative;
+        }
+
+        .experience-card:nth-child(1) { animation-delay: 0.1s; }
+        .experience-card:nth-child(2) { animation-delay: 0.2s; }
+        .experience-card:nth-child(3) { animation-delay: 0.3s; }
+
+        .experience-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 30px rgba(17, 100, 102, 0.2);
+            border-top-color: var(--accent-warm);
+        }
+
+        .experience-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 3px;
+            height: 0;
+            background: linear-gradient(180deg, var(--accent-warm), var(--accent-bronze));
+            transition: height 0.4s ease;
+        }
+
+        .experience-card:hover::before {
+            height: 100%;
+        }
+
+        .experience-card h3 {
+            color: var(--primary-blue);
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        .experience-card .company {
+            color: var(--accent-bronze);
+            font-weight: 600;
+            font-size: 0.95rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .experience-card .dates {
+            color: #94a3b8;
+            font-size: 0.85rem;
+            margin-bottom: 1rem;
+        }
+
+        .experience-card ul {
+            list-style: none;
+            margin-top: 1rem;
+        }
+
+        .experience-card li {
+            color: #475569;
+            margin-bottom: 0.7rem;
+            padding-left: 1.5rem;
+            position: relative;
+            font-size: 0.95rem;
+        }
+
+        .experience-card li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--accent-bronze);
+            font-weight: bold;
+        }
+
+        /* Skills Section */
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-group {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            opacity: 0;
+            animation: fadeInUp 0.6s ease forwards;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .skill-group:nth-child(1) { animation-delay: 0.1s; }
+        .skill-group:nth-child(2) { animation-delay: 0.2s; }
+        .skill-group:nth-child(3) { animation-delay: 0.3s; }
+        .skill-group:nth-child(4) { animation-delay: 0.4s; }
+
+        .skill-group:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 30px rgba(17, 100, 102, 0.15);
+            background: linear-gradient(135deg, rgba(209, 232, 226, 0.3), rgba(255, 203, 154, 0.1));
+        }
+
+        .skill-group::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--accent-bronze), var(--accent-warm));
+            transition: width 0.4s ease;
+        }
+
+        .skill-group:hover::after {
+            width: 100%;
+        }
+
+        .skill-group h3 {
+            color: var(--accent-bronze);
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        .skill-tag {
+            display: inline-block;
+            background: var(--accent-mint);
+            color: var(--primary-blue);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            margin-bottom: 0.7rem;
+            margin-right: 0.5rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .skill-tag:hover {
+            background: var(--accent-warm);
+            color: white;
+            transform: scale(1.05);
+        }
+
+        /* Projects Section */
+        .projects-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            opacity: 0;
+            animation: fadeInUp 0.6s ease forwards;
+            position: relative;
+        }
+
+        .project-card:nth-child(1) { animation-delay: 0.1s; }
+        .project-card:nth-child(2) { animation-delay: 0.2s; }
+
+        .project-card:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 15px 40px rgba(17, 100, 102, 0.2);
+        }
+
+        .project-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 0;
+            background: rgba(255, 203, 154, 0.05);
+            transition: height 0.4s ease;
+            pointer-events: none;
+        }
+
+        .project-card:hover::after {
+            height: 100%;
+        }
+
+        .project-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, var(--accent-mint), var(--accent-warm));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 1.2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-image::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0);
+            transition: background 0.3s ease;
+        }
+
+        .project-image::after {
+            content: '';
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background: repeating-linear-gradient(
+                45deg,
+                transparent,
+                transparent 10px,
+                rgba(255, 255, 255, 0.1) 10px,
+                rgba(255, 255, 255, 0.1) 20px
+            );
+            animation: shimmer 3s infinite;
+            top: 0;
+            left: 0;
+        }
+
+        @keyframes shimmer {
+            0% { transform: translate(-100%, -100%); }
+            100% { transform: translate(100%, 100%); }
+        }
+
+        .project-card:hover .project-image::before {
+            background: rgba(0, 0, 0, 0.1);
+        }
+
+        .project-content {
+            padding: 1.5rem;
+        }
+
+        .project-content h3 {
+            color: var(--primary-blue);
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        .project-content p {
+            color: #475569;
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        .project-stats {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .stat {
+            flex: 1;
+            background: var(--accent-mint);
+            padding: 0.8rem;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .stat-value {
+            font-weight: 700;
+            color: var(--accent-bronze);
+            font-size: 1.1rem;
+            animation: countUp 0.8s ease-out;
+        }
+
+        .stat-label {
+            font-size: 0.75rem;
+            color: var(--primary-blue);
+            font-weight: 600;
+        }
+
+        @keyframes countUp {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        /* Education Section */
+        .education-timeline {
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        .education-timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(180deg, var(--accent-bronze), var(--accent-warm));
+        }
+
+        .education-item {
+            margin-bottom: 2rem;
+            position: relative;
+            opacity: 0;
+            animation: slideInRight 0.6s ease forwards;
+            padding: 1rem;
+            transition: all 0.3s ease;
+            border-radius: 8px;
+        }
+
+        .education-item:nth-child(1) { animation-delay: 0.1s; }
+        .education-item:nth-child(2) { animation-delay: 0.2s; }
+        .education-item:nth-child(3) { animation-delay: 0.3s; }
+
+        .education-item:hover {
+            background: rgba(209, 232, 226, 0.15);
+            transform: translateX(8px);
+        }
+
+        .education-item::before {
+            content: '';
+            position: absolute;
+            left: -15px;
+            top: 0;
+            width: 12px;
+            height: 12px;
+            background: var(--accent-warm);
+            border-radius: 50%;
+            border: 3px solid white;
+            box-shadow: 0 0 0 2px var(--accent-bronze);
+            animation: pulse 2s infinite;
+        }
+
+        .education-item:hover::before {
+            animation: none;
+            box-shadow: 0 0 12px 2px rgba(255, 203, 154, 0.5);
+        }
+
+        @keyframes pulse {
+            0%, 100% { box-shadow: 0 0 0 2px var(--accent-bronze); }
+            50% { box-shadow: 0 0 8px 2px rgba(255, 203, 154, 0.3); }
+        }
+
+        .education-item h3 {
+            color: var(--primary-blue);
+            font-size: 1.1rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .education-item .school {
+            color: var(--accent-bronze);
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .education-item .dates {
+            color: #94a3b8;
+            font-size: 0.85rem;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-dark) 100%);
+            color: var(--text-light);
+            border-radius: 12px;
+            padding: 4rem 2rem;
+            text-align: center;
+            margin: 4rem 0;
+        }
+
+        .contact-section h2 {
+            color: var(--text-light);
+            margin-bottom: 1rem;
+        }
+
+        .contact-section h2::after {
+            background: var(--accent-warm);
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .contact-section p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+        .contact-links {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+
+        .contact-link {
+            display: inline-block;
+            color: var(--text-light);
+            text-decoration: none;
+            padding: 0.7rem 1.5rem;
+            border: 2px solid var(--accent-warm);
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-link:hover {
+            background: var(--accent-warm);
+            color: var(--primary-dark);
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(255, 203, 154, 0.4);
+        }
+
+        .contact-link::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.5s, height 0.5s;
+            pointer-events: none;
+        }
+
+        .contact-link:hover::after {
+            width: 300px;
+            height: 300px;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary-dark);
+            color: var(--text-light);
+            text-align: center;
+            padding: 2rem;
+            font-size: 0.95rem;
+            opacity: 0.8;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            .section {
+                padding: 50px 1.5rem;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .experience-grid,
+            .projects-container,
+            .skills-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <header>
+        <nav>
+            <a href="#" class="logo">RA</a>
+            <ul class="nav-links">
+                <li><a href="#about" data-en="About" data-fr="À propos"></a></li>
+                <li><a href="#experience" data-en="Experience" data-fr="Expérience"></a></li>
+                <li><a href="#skills" data-en="Skills" data-fr="Compétences"></a></li>
+                <li><a href="#projects" data-en="Projects" data-fr="Projets"></a></li>
+                <li><a href="#education" data-en="Education" data-fr="Formation"></a></li>
+            </ul>
+            <div class="lang-toggle">
+                <button class="lang-btn active" id="lang-en" onclick="switchLang('en')">EN</button>
+                <button class="lang-btn" id="lang-fr" onclick="switchLang('fr')">FR</button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>
+                <span data-en="Hi, I'm" data-fr="Salut, je suis">Hi, I'm</span> <span class="accent" data-en="Roberto" data-fr="Roberto">Roberto</span>
+            </h1>
+            <p data-en="Commercial Development Expert | B2B Business Developer | Workflow Automation Specialist. Passionate about vibecoding, continuous learning, and sustainable growth." data-fr="Expert Développement Commercial | Développeur Commercial B2B | Spécialiste Automatisation Workflow. Passionné par le vibecoding, l'apprentissage continu et la croissance durable.">
+                Commercial Development Expert | B2B Business Developer | Workflow Automation Specialist. Passionate about vibecoding, continuous learning, and sustainable growth.
+            </p>
+            <button class="cta-button" data-en="Let's work together" data-fr="Travaillons ensemble" onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})"></button>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section">
+        <h2 data-en="About Me" data-fr="À propos">About Me</h2>
+        <div class="about-content">
+            <div class="about-text">
+                <p data-en="I'm Roberto, a commercial development expert with a passion for vibecoding, continuous learning, and sales excellence. Every project I touch gets the growth mindset treatment – I believe in innovation, digital transformation, and always proposing solutions for growth." data-fr="Je suis Roberto, un expert du développement commercial passionné par le vibecoding, l'apprentissage continu et l'excellence en vente. Chaque projet que je touche obtient le traitement de la mentalité de croissance – je crois à l'innovation, la transformation digitale et je propose toujours des solutions pour la croissance.">
+                    I'm Roberto, a commercial development expert with a passion for vibecoding, continuous learning, and sales excellence. Every project I touch gets the growth mindset treatment.
+                </p>
+                <p data-en="With proven experience in retail, e-commerce, and B2B environments, I've consistently driven performance improvements through strategic account management, AI-powered automation, and creative problem-solving. My approach combines data-driven insights with innovative solutions to achieve sustainable revenue growth." data-fr="Avec une expérience éprouvée dans le commerce de détail, l'e-commerce et les environnements B2B, j'ai constamment amélioré les performances par la gestion stratégique des comptes, l'automatisation alimentée par l'IA et la résolution créative de problèmes. Mon approche combine les perspectives basées sur les données avec des solutions innovantes pour atteindre une croissance durable.">
+                    With experience across retail, e-commerce, and B2B environments, I've consistently driven performance improvements and built strong client relationships.
+                </p>
+            </div>
+            <div class="about-highlights">
+                <div class="highlight-card">
+                    <h3 data-en="B2B & Key Accounts" data-fr="B2B & Comptes Clés">B2B & Key Accounts</h3>
+                    <p data-en="Strategic account management & enterprise business development expertise" data-fr="Gestion stratégique des comptes et expertise en développement commercial d'entreprise">Strategic account management & enterprise business development expertise</p>
+                </div>
+                <div class="highlight-card">
+                    <h3 data-en="Proven Growth Results" data-fr="Résultats Croissance Prouvés">Proven Growth Results</h3>
+                    <p data-en="+27% Click & Collect growth | +14% social media engagement | Sustainable revenue expansion" data-fr="+27 % de croissance Click & Collect | +14 % d'engagement réseaux sociaux | Expansion durable des revenus">+27% Click & Collect growth | +14% social media engagement | Sustainable revenue expansion</p>
+                </div>
+                <div class="highlight-card">
+                    <h3 data-en="AI & Workflow Mastery" data-fr="Maîtrise IA & Workflow">AI & Workflow Mastery</h3>
+                    <p data-en="Intelligent workflow automation to eliminate time-consuming tasks and boost internal productivity" data-fr="Automatisation intelligente des workflows pour éliminer les tâches chronophages et augmenter la productivité">Intelligent workflow automation to eliminate time-consuming tasks and boost internal productivity</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="section">
+        <h2 data-en="Professional Experience" data-fr="Expérience Professionnelle">Professional Experience</h2>
+        <div class="experience-grid">
+            <div class="experience-card">
+                <h3 data-en="Commercial Development Manager" data-fr="Responsable Développement Commercial">Commercial Development Manager</h3>
+                <div class="company">Midea</div>
+                <div class="dates">06/2025 - Present | Vitrolles, France</div>
+                <ul>
+                    <li data-en="Identify and expand high-value growth opportunities for enterprise clients" data-fr="Identifier et développer les opportunités de croissance à haute valeur pour les clients d'entreprise">Identify and expand high-value growth opportunities for enterprise clients</li>
+                    <li data-en="Pilot and execute team initiatives to optimize sales processes and efficiency" data-fr="Piloter et exécuter les initiatives d'équipe pour optimiser les processus et l'efficacité des ventes">Pilot and execute team initiatives to optimize sales processes and efficiency</li>
+                    <li data-en="Drive performance through collaborative, solution-oriented B2B approach" data-fr="Améliorer les performances par une approche collaborative et orientée solutions B2B">Drive performance through collaborative, solution-oriented B2B approach</li>
+                </ul>
+            </div>
+
+            <div class="experience-card">
+                <h3 data-en="Commercial Advisor" data-fr="Conseiller Commercial">Commercial Advisor</h3>
+                <div class="company">Darty</div>
+                <div class="dates">06/2024 - 07/2025 | Istres, France</div>
+                <ul>
+                    <li data-en="Maximized sales revenue through advanced upselling and client relationship management" data-fr="Maximisé les revenus par l'upselling avancé et la gestion de la relation client">Maximized sales revenue through advanced upselling and client relationship management</li>
+                    <li data-en="Enhanced customer satisfaction and departmental performance metrics" data-fr="Amélioré la satisfaction client et les métriques de performance du département">Enhanced customer satisfaction and departmental performance metrics</li>
+                    <li data-en="Created & managed social media presence, boosting local brand awareness and engagement" data-fr="Créé et géré la présence sur les réseaux sociaux, augmentant la notoriété locale">Created & managed social media presence, boosting local brand awareness and engagement</li>
+                </ul>
+            </div>
+
+            <div class="experience-card">
+                <h3 data-en="Sales Advisor" data-fr="Conseiller de Vente">Sales Advisor</h3>
+                <div class="company">Coach</div>
+                <div class="dates">01/2023 - 06/2024 | Miramas, France</div>
+                <ul>
+                    <li data-en="Consulted clients with personalized recommendations and tailored solutions" data-fr="Conseillé les clients avec des recommandations personnalisées et des solutions adaptées">Consulted clients with personalized recommendations and tailored solutions</li>
+                    <li data-en="Developed sales techniques and strengthened customer relations skills" data-fr="Développé les techniques de vente et renforcé les compétences en relation client">Developed sales techniques and strengthened customer relations skills</li>
+                    <li data-en="Achieved +27% growth in Click & Collect and e-commerce delivery through personalized recommendations" data-fr="Atteint +27 % de croissance en Click & Collect par des recommandations personnalisées">Achieved +27% growth in Click & Collect and e-commerce delivery through personalized recommendations</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="section">
+        <h2 data-en="Core Competencies" data-fr="Compétences Clés">Core Competencies</h2>
+        <div class="skills-container">
+            <div class="skill-group">
+                <h3 data-en="B2B Business Development" data-fr="Développement Commercial B2B">B2B Business Development</h3>
+                <span class="skill-tag">Key Account Management</span>
+                <span class="skill-tag">Strategic Partnerships</span>
+                <span class="skill-tag">Enterprise Sales</span>
+                <span class="skill-tag">Revenue Growth</span>
+            </div>
+            <div class="skill-group">
+                <h3 data-en="Commercial Excellence" data-fr="Excellence Commerciale">Commercial Excellence</h3>
+                <span class="skill-tag">Upselling & Cross-selling</span>
+                <span class="skill-tag">CRM Systems</span>
+                <span class="skill-tag">Client Relationship</span>
+                <span class="skill-tag">Sales Strategy</span>
+            </div>
+            <div class="skill-group">
+                <h3 data-en="Digital Transformation" data-fr="Transformation Digitale">Digital Transformation</h3>
+                <span class="skill-tag">AI Workflow Automation</span>
+                <span class="skill-tag">Process Optimization</span>
+                <span class="skill-tag">E-commerce Integration</span>
+                <span class="skill-tag">Social Media Strategy</span>
+            </div>
+            <div class="skill-group">
+                <h3 data-en="Languages" data-fr="Langues">Languages</h3>
+                <span class="skill-tag">French (Native)</span>
+                <span class="skill-tag">English (Fluent)</span>
+                <span class="skill-tag">Portuguese (Native)</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="section">
+        <h2 data-en="Featured Projects" data-fr="Projets Vedettes">Featured Projects</h2>
+        <div class="projects-container">
+            <div class="project-card">
+                <div class="project-image">
+                    <span data-en="🤖 AI Workflow Automation" data-fr="🤖 Automatisation Workflow IA">🤖 AI Workflow Automation</span>
+                </div>
+                <div class="project-content">
+                    <h3 data-en="Workflow Automation with AI" data-fr="Automatisation Workflow avec IA">Workflow Automation with AI</h3>
+                    <p data-en="Designed and implemented intelligent workflows to eliminate time-consuming, repetitive tasks. Leveraged AI automation to streamline internal processes, significantly improving company productivity and employee efficiency." data-fr="Conception et mise en œuvre de workflows intelligents pour éliminer les tâches chronophages et répétitives. Utilisation de l'automatisation IA pour rationaliser les processus internes et améliorer significativement la productivité.">
+                        Designed and implemented intelligent workflows to eliminate time-consuming tasks, significantly improving internal company productivity.
+                    </p>
+                    <div class="project-stats">
+                        <div class="stat">
+                            <div class="stat-value" data-en="High" data-fr="Élevé">High</div>
+                            <div class="stat-label" data-en="Impact" data-fr="Impact">Impact</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-value" data-en="Active" data-fr="Actif">Active</div>
+                            <div class="stat-label" data-en="Status" data-fr="Statut">Status</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-image">
+                    <span data-en="📱 Social Media Growth" data-fr="📱 Croissance Réseaux Sociaux">📱 Social Media Growth</span>
+                </div>
+                <div class="project-content">
+                    <h3 data-en="Social Media Strategy" data-fr="Stratégie Réseaux Sociaux">Social Media Strategy</h3>
+                    <p data-en="Developed and executed comprehensive social media strategy creating accounts on multiple platforms. Boosted engagement by 14% through strategic content planning, community management, and local brand awareness campaigns. Revised working methods for better efficiency." data-fr="Développement et exécution d'une stratégie complète des réseaux sociaux avec création de comptes. Augmentation de l'engagement de 14 % par la planification stratégique du contenu et la gestion communautaire.">
+                        Developed and executed comprehensive social media strategy, boosting engagement by 14% and significantly increasing local brand recognition.
+                    </p>
+                    <div class="project-stats">
+                        <div class="stat">
+                            <div class="stat-value">+14%</div>
+                            <div class="stat-label" data-en="Engagement" data-fr="Engagement">Engagement</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-value" data-en="Success" data-fr="Succès">Success</div>
+                            <div class="stat-label" data-en="Result" data-fr="Résultat">Result</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education" class="section">
+        <h2 data-en="Education" data-fr="Formation">Education</h2>
+        <div class="education-timeline">
+            <div class="education-item">
+                <h3 data-en="Master - Large Business School Program" data-fr="Master - Programme Grandes Écoles">Master - Large Business School Program</h3>
+                <div class="school">Kedge Business School</div>
+                <div class="dates">2026 - 2028 | Marseille</div>
+            </div>
+            <div class="education-item">
+                <h3 data-en="Bachelor - Commercial Development Manager" data-fr="Bachelor - Responsable Développement Commercial">Bachelor - Commercial Development Manager</h3>
+                <div class="school">ESAME</div>
+                <div class="dates">2025 - 2026 | Salon de Provence</div>
+            </div>
+            <div class="education-item">
+                <h3 data-en="BTS MCO - Business & Commerce" data-fr="BTS MCO - Commerce et Affaires">BTS MCO - Business & Commerce</h3>
+                <div class="school">ESAME</div>
+                <div class="dates">2023 - 2025 | Salon de Provence</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section">
+        <div class="contact-section">
+            <h2 data-en="Let's Get in Touch" data-fr="Restons en Contact">Let's Get in Touch</h2>
+            <p data-en="Ready to collaborate on growth opportunities? Reach out and let's explore what we can achieve together." data-fr="Prêt à collaborer sur des opportunités de croissance ? Contactez-moi et explorons ce que nous pouvons réaliser ensemble.">
+                Ready to collaborate? Reach out and let's explore opportunities together.
+            </p>
+            <div class="contact-links">
+                <a href="mailto:roberto.4zevedo@gmail.com" class="contact-link" data-en="Email" data-fr="Email">Email</a>
+                <a href="https://linkedin.com/in/roberto-azevedo-bas" target="_blank" class="contact-link" data-en="LinkedIn" data-fr="LinkedIn">LinkedIn</a>
+                <a href="https://drive.google.com/uc?export=download&id=YOUR_CV_ID" class="contact-link" data-en="Download CV" data-fr="Télécharger CV">Download CV</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p data-en="© 2026 Roberto Azevedo. All rights reserved." data-fr="© 2026 Roberto Azevedo. Tous droits réservés.">© 2026 Roberto Azevedo. All rights reserved.</p>
+    </footer>
+
+    <script>
+        let currentLang = 'en';
+
+        function switchLang(lang) {
+            currentLang = lang;
+            document.getElementById('lang-en').classList.toggle('active', lang === 'en');
+            document.getElementById('lang-fr').classList.toggle('active', lang === 'fr');
+
+            document.querySelectorAll('[data-en][data-fr]').forEach(el => {
+                el.textContent = el.getAttribute(`data-${lang}`);
+            });
+
+            document.querySelectorAll('[data-en]').forEach(el => {
+                if (lang === 'en') {
+                    el.textContent = el.getAttribute('data-en');
+                } else if (lang === 'fr' && el.hasAttribute('data-fr')) {
+                    el.textContent = el.getAttribute('data-fr');
+                }
+            });
+        }
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
